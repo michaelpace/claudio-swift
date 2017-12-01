@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		649DCE981FD1F54400955793 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DCE971FD1F54400955793 /* AppDelegate.swift */; };
-		649DCE9A1FD1F54400955793 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DCE991FD1F54400955793 /* ViewController.swift */; };
-		649DCE9D1FD1F54400955793 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649DCE9B1FD1F54400955793 /* Main.storyboard */; };
+		649DCE9A1FD1F54400955793 /* RecordingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DCE991FD1F54400955793 /* RecordingListViewController.swift */; };
+		649DCE9D1FD1F54400955793 /* RecordingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649DCE9B1FD1F54400955793 /* RecordingList.storyboard */; };
 		649DCE9F1FD1F54400955793 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649DCE9E1FD1F54400955793 /* Assets.xcassets */; };
 		649DCEA21FD1F54400955793 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649DCEA01FD1F54400955793 /* LaunchScreen.storyboard */; };
 		649DCEAD1FD1F54500955793 /* ClaudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DCEAC1FD1F54500955793 /* ClaudioTests.swift */; };
+		64B240451FD2079E007073D4 /* UITableView+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B240441FD2079E007073D4 /* UITableView+Setup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,14 +29,15 @@
 /* Begin PBXFileReference section */
 		649DCE941FD1F54400955793 /* Claudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Claudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		649DCE971FD1F54400955793 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		649DCE991FD1F54400955793 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		649DCE9C1FD1F54400955793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		649DCE991FD1F54400955793 /* RecordingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingListViewController.swift; sourceTree = "<group>"; };
+		649DCE9C1FD1F54400955793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RecordingList.storyboard; sourceTree = "<group>"; };
 		649DCE9E1FD1F54400955793 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		649DCEA11FD1F54400955793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		649DCEA31FD1F54400955793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		649DCEA81FD1F54500955793 /* ClaudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClaudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		649DCEAC1FD1F54500955793 /* ClaudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudioTests.swift; sourceTree = "<group>"; };
 		649DCEAE1FD1F54500955793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64B240441FD2079E007073D4 /* UITableView+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Setup.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +79,10 @@
 		649DCE961FD1F54400955793 /* Claudio */ = {
 			isa = PBXGroup;
 			children = (
-				649DCE971FD1F54400955793 /* AppDelegate.swift */,
-				649DCE991FD1F54400955793 /* ViewController.swift */,
-				649DCE9B1FD1F54400955793 /* Main.storyboard */,
-				649DCE9E1FD1F54400955793 /* Assets.xcassets */,
-				649DCEA01FD1F54400955793 /* LaunchScreen.storyboard */,
-				649DCEA31FD1F54400955793 /* Info.plist */,
+				649DCEB71FD2032F00955793 /* Application */,
+				64B240401FD20628007073D4 /* Features */,
+				64B240411FD20641007073D4 /* Platform */,
+				649DCEB81FD2036C00955793 /* Resources */,
 			);
 			path = Claudio;
 			sourceTree = "<group>";
@@ -94,6 +94,49 @@
 				649DCEAE1FD1F54500955793 /* Info.plist */,
 			);
 			path = ClaudioTests;
+			sourceTree = "<group>";
+		};
+		649DCEB71FD2032F00955793 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				649DCEA01FD1F54400955793 /* LaunchScreen.storyboard */,
+				649DCEA31FD1F54400955793 /* Info.plist */,
+				649DCE971FD1F54400955793 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		649DCEB81FD2036C00955793 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				649DCE9E1FD1F54400955793 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		649DCEB91FD2038E00955793 /* Recording list */ = {
+			isa = PBXGroup;
+			children = (
+				649DCE991FD1F54400955793 /* RecordingListViewController.swift */,
+				649DCE9B1FD1F54400955793 /* RecordingList.storyboard */,
+			);
+			path = "Recording list";
+			sourceTree = "<group>";
+		};
+		64B240401FD20628007073D4 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				649DCEB91FD2038E00955793 /* Recording list */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		64B240411FD20641007073D4 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				64B240441FD2079E007073D4 /* UITableView+Setup.swift */,
+			);
+			path = Platform;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,7 +224,7 @@
 			files = (
 				649DCEA21FD1F54400955793 /* LaunchScreen.storyboard in Resources */,
 				649DCE9F1FD1F54400955793 /* Assets.xcassets in Resources */,
-				649DCE9D1FD1F54400955793 /* Main.storyboard in Resources */,
+				649DCE9D1FD1F54400955793 /* RecordingList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +242,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				649DCE9A1FD1F54400955793 /* ViewController.swift in Sources */,
+				64B240451FD2079E007073D4 /* UITableView+Setup.swift in Sources */,
+				649DCE9A1FD1F54400955793 /* RecordingListViewController.swift in Sources */,
 				649DCE981FD1F54400955793 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,12 +267,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		649DCE9B1FD1F54400955793 /* Main.storyboard */ = {
+		649DCE9B1FD1F54400955793 /* RecordingList.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				649DCE9C1FD1F54400955793 /* Base */,
 			);
-			name = Main.storyboard;
+			name = RecordingList.storyboard;
 			sourceTree = "<group>";
 		};
 		649DCEA01FD1F54400955793 /* LaunchScreen.storyboard */ = {
@@ -355,7 +399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7VP6KTBX4J;
-				INFOPLIST_FILE = Claudio/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Claudio/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaelpaces.Claudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -370,7 +414,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7VP6KTBX4J;
-				INFOPLIST_FILE = Claudio/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Claudio/Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaelpaces.Claudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
