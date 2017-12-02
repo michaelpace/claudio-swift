@@ -11,7 +11,17 @@ import UIKit
 /// A view controller displaying a list of the user's recordings.
 final class RecordingListViewController: UITableViewController {
 
-    // MARK: - UIViewController
+    // MARK: - Private properties
+
+    private let recorder = AudioRecorder()
+    private let player = AudioPlayer()
+    private var mostRecentRecordingPath: String?
+
+}
+
+// MARK: - UIViewController
+
+extension RecordingListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +39,7 @@ private extension RecordingListViewController {
     func setUpNavigationItem() {
         navigationItem.title = "Claudio"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(userDidTap(recordBarButtonItem:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(userDidTap(playBarButtonItem:)))
     }
 
     func setUpTableView() {
@@ -42,7 +53,18 @@ private extension RecordingListViewController {
 private extension RecordingListViewController {
 
     @objc func userDidTap(recordBarButtonItem: UIBarButtonItem) {
-        print("TODO: Surface recording interface.")
+        if recorder.isRecording {
+            recorder.stop()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(userDidTap(recordBarButtonItem:)))
+        } else {
+            mostRecentRecordingPath = recorder.record()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Stop", style: .plain, target: self, action: #selector(userDidTap(recordBarButtonItem:)))
+        }
+    }
+
+    @objc func userDidTap(playBarButtonItem: UIBarButtonItem) {
+        guard let recordingPath = mostRecentRecordingPath else { return }
+        player.play(recordingPath)
     }
 
 }

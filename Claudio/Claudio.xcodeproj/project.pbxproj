@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		645D55141FD3549400EAA8F2 /* URL+CommonURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645D55131FD3549400EAA8F2 /* URL+CommonURLs.swift */; };
 		649DCE981FD1F54400955793 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DCE971FD1F54400955793 /* AppDelegate.swift */; };
 		649DCE9A1FD1F54400955793 /* RecordingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DCE991FD1F54400955793 /* RecordingListViewController.swift */; };
 		649DCE9D1FD1F54400955793 /* RecordingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649DCE9B1FD1F54400955793 /* RecordingList.storyboard */; };
@@ -14,6 +15,10 @@
 		649DCEA21FD1F54400955793 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649DCEA01FD1F54400955793 /* LaunchScreen.storyboard */; };
 		649DCEAD1FD1F54500955793 /* ClaudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DCEAC1FD1F54500955793 /* ClaudioTests.swift */; };
 		64B240451FD2079E007073D4 /* UITableView+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B240441FD2079E007073D4 /* UITableView+Setup.swift */; };
+		64B240541FD3389E007073D4 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B240501FD3389E007073D4 /* AudioPlayer.swift */; };
+		64B240551FD3389E007073D4 /* AudioSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B240511FD3389E007073D4 /* AudioSession.swift */; };
+		64B240571FD3389E007073D4 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B240531FD3389E007073D4 /* AudioRecorder.swift */; };
+		64B240591FD3399D007073D4 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B240581FD3399D007073D4 /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		645D55131FD3549400EAA8F2 /* URL+CommonURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+CommonURLs.swift"; sourceTree = "<group>"; };
 		649DCE941FD1F54400955793 /* Claudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Claudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		649DCE971FD1F54400955793 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		649DCE991FD1F54400955793 /* RecordingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingListViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +44,10 @@
 		649DCEAC1FD1F54500955793 /* ClaudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudioTests.swift; sourceTree = "<group>"; };
 		649DCEAE1FD1F54500955793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64B240441FD2079E007073D4 /* UITableView+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Setup.swift"; sourceTree = "<group>"; };
+		64B240501FD3389E007073D4 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		64B240511FD3389E007073D4 /* AudioSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioSession.swift; sourceTree = "<group>"; };
+		64B240531FD3389E007073D4 /* AudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		64B240581FD3399D007073D4 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		645D55121FD3534C00EAA8F2 /* File system */ = {
+			isa = PBXGroup;
+			children = (
+				645D55131FD3549400EAA8F2 /* URL+CommonURLs.swift */,
+			);
+			path = "File system";
+			sourceTree = "<group>";
+		};
 		649DCE8B1FD1F54400955793 = {
 			isa = PBXGroup;
 			children = (
@@ -100,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				649DCEA01FD1F54400955793 /* LaunchScreen.storyboard */,
-				649DCEA31FD1F54400955793 /* Info.plist */,
 				649DCE971FD1F54400955793 /* AppDelegate.swift */,
 			);
 			path = Application;
@@ -109,6 +126,7 @@
 		649DCEB81FD2036C00955793 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				649DCEA31FD1F54400955793 /* Info.plist */,
 				649DCE9E1FD1F54400955793 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -134,9 +152,22 @@
 		64B240411FD20641007073D4 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				645D55121FD3534C00EAA8F2 /* File system */,
+				64B2404F1FD3389E007073D4 /* Audio */,
 				64B240441FD2079E007073D4 /* UITableView+Setup.swift */,
+				64B240581FD3399D007073D4 /* Logger.swift */,
 			);
 			path = Platform;
+			sourceTree = "<group>";
+		};
+		64B2404F1FD3389E007073D4 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				64B240501FD3389E007073D4 /* AudioPlayer.swift */,
+				64B240511FD3389E007073D4 /* AudioSession.swift */,
+				64B240531FD3389E007073D4 /* AudioRecorder.swift */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +221,11 @@
 					649DCE931FD1F54400955793 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					649DCEA71FD1F54500955793 = {
 						CreatedOnToolsVersion = 9.1;
@@ -243,8 +279,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				64B240451FD2079E007073D4 /* UITableView+Setup.swift in Sources */,
+				64B240571FD3389E007073D4 /* AudioRecorder.swift in Sources */,
+				64B240551FD3389E007073D4 /* AudioSession.swift in Sources */,
 				649DCE9A1FD1F54400955793 /* RecordingListViewController.swift in Sources */,
 				649DCE981FD1F54400955793 /* AppDelegate.swift in Sources */,
+				64B240541FD3389E007073D4 /* AudioPlayer.swift in Sources */,
+				64B240591FD3399D007073D4 /* Logger.swift in Sources */,
+				645D55141FD3549400EAA8F2 /* URL+CommonURLs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7VP6KTBX4J;
-				INFOPLIST_FILE = "$(SRCROOT)/Claudio/Application/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Claudio/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaelpaces.Claudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -414,7 +455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7VP6KTBX4J;
-				INFOPLIST_FILE = "$(SRCROOT)/Claudio/Application/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Claudio/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaelpaces.Claudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
