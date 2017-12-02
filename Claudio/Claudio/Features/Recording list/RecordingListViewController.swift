@@ -28,11 +28,21 @@ private extension RecordingListViewController {
 
     func setUpNavigationItem() {
         navigationItem.title = "Claudio"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(userDidTap(recordBarButtonItem:)))
     }
 
     func setUpTableView() {
         tableView.hideEmptyCells()
+    }
+
+}
+
+// MARK: - Actions
+
+private extension RecordingListViewController {
+
+    @objc func userDidTap(recordBarButtonItem: UIBarButtonItem) {
+        print("TODO: Surface recording interface.")
     }
 
 }
