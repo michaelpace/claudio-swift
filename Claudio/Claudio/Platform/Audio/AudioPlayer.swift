@@ -19,6 +19,13 @@ final class AudioPlayer: NSObject {
         return avAudioPlayer?.isPlaying ?? false
     }
 
+    /// The playback mode to use. Defaults to `.earpiece`.
+    var playbackMode: AudioSession.Mode.Playback = .earpiece {
+        didSet {
+            audioSession.mode = .playback(playbackMode)
+        }
+    }
+
     // MARK: - Private properties
 
     private var avAudioPlayer: AVAudioPlayer?
@@ -48,8 +55,7 @@ extension AudioPlayer {
         let url = playbackDirectory.appendingPathComponent(path)
         Logger.log(.debug, "Playing url \(url)")
 
-        // TODO: Figure out how to represent & persist playback source.
-        audioSession.mode = .earpiecePlayback
+        audioSession.mode = .playback(playbackMode)
         audioSession.setSessionActive(true)
 
         if avAudioPlayer?.url != url {
@@ -77,6 +83,11 @@ extension AudioPlayer {
         avAudioPlayer?.stop()
         audioSession.setSessionActive(false)
         avAudioPlayer?.currentTime = 0
+    }
+
+    /// Toggles the `playbackMode` property between its valid values.
+    func togglePlaybackMode() {
+        playbackMode = (playbackMode == .earpiece) ? .speaker : .earpiece
     }
 
 }

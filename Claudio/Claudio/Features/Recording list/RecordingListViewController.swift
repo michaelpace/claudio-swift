@@ -39,7 +39,8 @@ private extension RecordingListViewController {
     func setUpNavigationItem() {
         navigationItem.title = "Claudio"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(userDidTap(recordBarButtonItem:)))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(userDidTap(playBarButtonItem:)))
+        navigationItem.leftBarButtonItems = [UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(userDidTap(playBarButtonItem:))),
+                                             UIBarButtonItem(title: "Toggle", style: .plain, target: self, action: #selector(userDidTap(togglePlaybackSourceBarButtonItem:)))]
     }
 
     func setUpTableView() {
@@ -65,6 +66,10 @@ private extension RecordingListViewController {
     @objc func userDidTap(playBarButtonItem: UIBarButtonItem) {
         guard let recordingPath = mostRecentRecordingPath else { return }
         player.play(recordingPath)
+    }
+
+    @objc func userDidTap(togglePlaybackSourceBarButtonItem: UIBarButtonItem) {
+        player.togglePlaybackMode()
     }
 
 }

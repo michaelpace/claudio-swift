@@ -18,7 +18,7 @@ final class AudioSession {
     static let shared = AudioSession()
 
     /// The mode to use for this session. Defaults to `.earpiecePlayback`.
-    var mode: Mode = .earpiecePlayback {
+    var mode: Mode = .playback(.earpiece) {
         didSet {
             do {
                 try avAudioSession.setCategory(mode.category)
@@ -64,11 +64,8 @@ extension AudioSession {
     /// Encapsulates possible audio modes for this session.
     enum Mode {
 
-        /// A playback mode which routes audio through the phone's earpiece.
-        case earpiecePlayback
-
-        /// A playback mode which routes audio through the phone's speaker.
-        case speakerPlayback
+        /// A playback mode.
+        case playback(_: Playback)
 
         /// A recording mode.
         case recording
@@ -76,21 +73,37 @@ extension AudioSession {
         /// The port to use for this `Mode`.
         fileprivate var audioPort: AVAudioSessionPortOverride {
             switch self {
-            case .earpiecePlayback, .recording:
+            case .recording:
                 return .none
-            case .speakerPlayback:
-                return .speaker
+
+            case let .playback(playbackMode):
+                switch playbackMode {
+                case .earpiece:
+                    return .none
+                case .speaker:
+                    return .speaker
+                }
             }
         }
 
         /// The category string for this `Mode`. The category identifies the set of audio capabilities we request from the hardware.
         fileprivate var category: String {
             switch self {
-            case .earpiecePlayback, .speakerPlayback:
+            case .playback:
                 return AVAudioSessionCategoryPlayAndRecord
             case .recording:
                 return AVAudioSessionCategoryRecord
             }
+        }
+
+        /// Encapsulates possible playback modes of this session.
+        enum Playback {
+
+            /// A playback mode which routes audio through the phone's earpiece.
+            case earpiece
+
+            /// A playback mode which routes audio through the phone's speaker.
+            case speaker
         }
     }
 
