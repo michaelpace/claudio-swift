@@ -19,6 +19,7 @@
 		64B240551FD3389E007073D4 /* AudioSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B240511FD3389E007073D4 /* AudioSession.swift */; };
 		64B240571FD3389E007073D4 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B240531FD3389E007073D4 /* AudioRecorder.swift */; };
 		64B240591FD3399D007073D4 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B240581FD3399D007073D4 /* Logger.swift */; };
+		CF9C569533A572EBB3AE1817 /* Pods_Claudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FD2CEFC98C4DC56A6E9D11 /* Pods_Claudio.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,9 @@
 		64B240511FD3389E007073D4 /* AudioSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioSession.swift; sourceTree = "<group>"; };
 		64B240531FD3389E007073D4 /* AudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		64B240581FD3399D007073D4 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		938A2B08EA2CD7BC2CA9059B /* Pods-Claudio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Claudio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Claudio/Pods-Claudio.release.xcconfig"; sourceTree = "<group>"; };
+		C9FD2CEFC98C4DC56A6E9D11 /* Pods_Claudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Claudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF236B98BCFA4C173F5A161D /* Pods-Claudio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Claudio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Claudio/Pods-Claudio.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF9C569533A572EBB3AE1817 /* Pods_Claudio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41D7476F1C2B777B94E7075B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9FD2CEFC98C4DC56A6E9D11 /* Pods_Claudio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		645D55121FD3534C00EAA8F2 /* File system */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +95,8 @@
 				649DCE961FD1F54400955793 /* Claudio */,
 				649DCEAB1FD1F54500955793 /* ClaudioTests */,
 				649DCE951FD1F54400955793 /* Products */,
+				CC094FFF91937AF6FE088AE6 /* Pods */,
+				41D7476F1C2B777B94E7075B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +185,15 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		CC094FFF91937AF6FE088AE6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF236B98BCFA4C173F5A161D /* Pods-Claudio.debug.xcconfig */,
+				938A2B08EA2CD7BC2CA9059B /* Pods-Claudio.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,9 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 649DCEB11FD1F54500955793 /* Build configuration list for PBXNativeTarget "Claudio" */;
 			buildPhases = (
+				A7522BB0FA53863463541042 /* [CP] Check Pods Manifest.lock */,
 				649DCE901FD1F54400955793 /* Sources */,
 				649DCE911FD1F54400955793 /* Frameworks */,
 				649DCE921FD1F54400955793 /* Resources */,
+				9A966EF715F411ABA38093CE /* [CP] Embed Pods Frameworks */,
+				94F9D0FA27AA05B656D95D35 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,6 +299,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		94F9D0FA27AA05B656D95D35 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Claudio/Pods-Claudio-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A966EF715F411ABA38093CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Claudio/Pods-Claudio-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Claudio/Pods-Claudio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7522BB0FA53863463541042 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Claudio-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		649DCE901FD1F54400955793 /* Sources */ = {
@@ -436,6 +519,7 @@
 		};
 		649DCEB21FD1F54500955793 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF236B98BCFA4C173F5A161D /* Pods-Claudio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -451,6 +535,7 @@
 		};
 		649DCEB31FD1F54500955793 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 938A2B08EA2CD7BC2CA9059B /* Pods-Claudio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
