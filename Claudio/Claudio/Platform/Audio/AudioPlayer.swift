@@ -88,7 +88,8 @@ private extension AudioPlayer {
             newAVAudioPlayer.delegate = self
             return newAVAudioPlayer
         } catch {
-            fatalError("Error creating a new av audio player: \(error)")
+            assertionFailure("Error creating a new `AVAudioPlayer`: \(error)")
+            return AVAudioPlayer()
         }
     }
 

@@ -20,9 +20,6 @@ final class AudioRecorder: NSObject {
         AVFormatIDKey: NSNumber(value: Int32(kAudioFormatMPEG4AAC)),
         AVNumberOfChannelsKey: NSNumber(value: 1),
         AVEncoderAudioQualityKey: NSNumber(value: Int32(AVAudioQuality.medium.rawValue))]
-    private let meterRefreshFrequencyMilliseconds: Double = 20
-    private var highestLevel: Float = Float(-Int.max)
-    private var lowestLevel: Float = Float(Int.max)
 
     private let saveDirectory: URL
 
@@ -93,7 +90,8 @@ private extension AudioRecorder {
 
             return newAVAudioRecorder
         } catch {
-            fatalError()
+            assertionFailure("Failed to create a new `AVAudioRecorder`: \(error)")
+            return AVAudioRecorder()
         }
     }
 
