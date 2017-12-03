@@ -7,15 +7,17 @@
 //
 
 import Foundation
-import RealmSwift
 
 /// Describes a type which has methods to store, retrieve, and delete data models.
 protocol DataStoring {
 
+    /// The model type for which this `DataStoring` can perform operations.
+    associatedtype ModelType
+
     /// Creates the specified model in the data store.
     ///
     /// - Parameter model: The model to create in the data store.
-    func create(_ model: Object)
+    func create(_ model: ModelType)
 
     /// Updates the contents of the data store per the changes in `block`.
     ///
@@ -28,16 +30,16 @@ protocol DataStoring {
     ///   - type: The type of the objects to retrieve.
     ///   - filter: An optional filter to use when retrieving models.
     /// - Returns: An array of objects of type `type` which match `filter` if it's not `nil`.
-    func retrieveObjects<TypeToRetrieve: Object>(type: TypeToRetrieve.Type, filter: NSPredicate?) -> [TypeToRetrieve]
+    func retrieveObjects(type: ModelType.Type, filter: NSPredicate?) -> [ModelType]
 
     /// Deletes the object from the data store.
     ///
     /// - Parameter model: The object to delete from the data store.
-    func delete(_ model: Object)
+    func delete(_ model: ModelType)
 
     /// Deletes the objects from the data store.
     ///
     /// - Parameter models: The objects to delete from the data store.
-    func delete(_ models: [Object])
+    func delete(_ models: [ModelType])
 
 }
