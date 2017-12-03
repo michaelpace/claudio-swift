@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		643379FF1FD48EC7008927BC /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643379FE1FD48EC7008927BC /* DataStore.swift */; };
+		64337A011FD48F1A008927BC /* DataStoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64337A001FD48F1A008927BC /* DataStoring.swift */; };
 		645D55141FD3549400EAA8F2 /* URL+CommonURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645D55131FD3549400EAA8F2 /* URL+CommonURLs.swift */; };
+		646579651FD48D88000BA578 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646579641FD48D88000BA578 /* Recording.swift */; };
 		649DCE981FD1F54400955793 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DCE971FD1F54400955793 /* AppDelegate.swift */; };
 		649DCE9A1FD1F54400955793 /* RecordingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DCE991FD1F54400955793 /* RecordingListViewController.swift */; };
 		649DCE9D1FD1F54400955793 /* RecordingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649DCE9B1FD1F54400955793 /* RecordingList.storyboard */; };
@@ -33,7 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		643379FE1FD48EC7008927BC /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		64337A001FD48F1A008927BC /* DataStoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoring.swift; sourceTree = "<group>"; };
 		645D55131FD3549400EAA8F2 /* URL+CommonURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+CommonURLs.swift"; sourceTree = "<group>"; };
+		646579641FD48D88000BA578 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		649DCE941FD1F54400955793 /* Claudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Claudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		649DCE971FD1F54400955793 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		649DCE991FD1F54400955793 /* RecordingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingListViewController.swift; sourceTree = "<group>"; };
@@ -81,12 +87,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		643379FD1FD48EBC008927BC /* Data store */ = {
+			isa = PBXGroup;
+			children = (
+				643379FE1FD48EC7008927BC /* DataStore.swift */,
+				64337A001FD48F1A008927BC /* DataStoring.swift */,
+			);
+			path = "Data store";
+			sourceTree = "<group>";
+		};
 		645D55121FD3534C00EAA8F2 /* File system */ = {
 			isa = PBXGroup;
 			children = (
 				645D55131FD3549400EAA8F2 /* URL+CommonURLs.swift */,
 			);
 			path = "File system";
+			sourceTree = "<group>";
+		};
+		646579631FD48D79000BA578 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				646579641FD48D88000BA578 /* Recording.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		649DCE8B1FD1F54400955793 = {
@@ -114,6 +137,7 @@
 			children = (
 				649DCEB71FD2032F00955793 /* Application */,
 				64B240401FD20628007073D4 /* Features */,
+				646579631FD48D79000BA578 /* Model */,
 				64B240411FD20641007073D4 /* Platform */,
 				649DCEB81FD2036C00955793 /* Resources */,
 			);
@@ -167,6 +191,7 @@
 		64B240411FD20641007073D4 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				643379FD1FD48EBC008927BC /* Data store */,
 				645D55121FD3534C00EAA8F2 /* File system */,
 				64B2404F1FD3389E007073D4 /* Audio */,
 				64B240441FD2079E007073D4 /* UITableView+Setup.swift */,
@@ -362,9 +387,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				64B240451FD2079E007073D4 /* UITableView+Setup.swift in Sources */,
+				64337A011FD48F1A008927BC /* DataStoring.swift in Sources */,
 				64B240571FD3389E007073D4 /* AudioRecorder.swift in Sources */,
 				64B240551FD3389E007073D4 /* AudioSession.swift in Sources */,
+				643379FF1FD48EC7008927BC /* DataStore.swift in Sources */,
 				649DCE9A1FD1F54400955793 /* RecordingListViewController.swift in Sources */,
+				646579651FD48D88000BA578 /* Recording.swift in Sources */,
 				649DCE981FD1F54400955793 /* AppDelegate.swift in Sources */,
 				64B240541FD3389E007073D4 /* AudioPlayer.swift in Sources */,
 				64B240591FD3399D007073D4 /* Logger.swift in Sources */,
