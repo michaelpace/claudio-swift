@@ -12,7 +12,7 @@ import AVFoundation
 /// A class representing an audio session. Access the singleton instance via the static `shared` property.
 final class AudioSession {
 
-    // MARK: - Public properties
+    // MARK: - Internal properties
 
     /// The singleton `AudioSession` instance for the application.
     static let shared = AudioSession()
@@ -21,10 +21,10 @@ final class AudioSession {
     var mode: Mode = .earpiecePlayback {
         didSet {
             do {
-                try avAudioSession.overrideOutputAudioPort(mode.audioPort)
                 try avAudioSession.setCategory(mode.category)
+                try avAudioSession.overrideOutputAudioPort(mode.audioPort)
             } catch {
-                Logger.log(.error, "Error setting output audio port to \(mode.audioPort) and category to \(mode.category): \(error)")
+                Logger.log(.error, "Error setting output audio port to \(mode.audioPort) and category to \(mode.category): \(error.localizedDescription)")
             }
         }
     }
@@ -38,7 +38,7 @@ final class AudioSession {
         do {
             try avAudioSession.setActive(active)
         } catch {
-            Logger.log(.error, "Error setting audio session to \(active ? "active" : "inactive"): \(error)")
+            Logger.log(.error, "Error setting audio session to \(active ? "active" : "inactive"): \(error.localizedDescription)")
             return false
         }
 
@@ -47,7 +47,7 @@ final class AudioSession {
 
     // MARK: - Private properties
 
-    let avAudioSession: AVAudioSession
+    private let avAudioSession: AVAudioSession
 
     // MARK: - Initializers
 
@@ -87,7 +87,7 @@ extension AudioSession {
         fileprivate var category: String {
             switch self {
             case .earpiecePlayback, .speakerPlayback:
-                return AVAudioSessionCategoryPlayback
+                return AVAudioSessionCategoryPlayAndRecord
             case .recording:
                 return AVAudioSessionCategoryRecord
             }

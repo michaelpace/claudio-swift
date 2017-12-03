@@ -40,11 +40,24 @@ extension Logger {
     /// - info: Use for messages which may be helpful for understanding the app, e.g., entry and exit points in key areas of the application.
     /// - warning: Use for messages which indicate that the app may reach an invalid state.
     /// - error: Use for messages which indicate that the app has encountered an error.
-    enum LogLevel: Int {
+    enum LogLevel: Int, CustomStringConvertible {
         case debug = 0
         case info = 1
         case warning = 2
         case error = 3
+
+        var description: String {
+            switch self {
+            case .debug:
+                return "debug"
+            case .info:
+                return "ℹ️"
+            case .warning:
+                return "⚠️"
+            case .error:
+                return "🚨"
+            }
+        }
     }
 
 }

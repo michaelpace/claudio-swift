@@ -12,9 +12,17 @@ import AVFoundation
 /// An object that provides methods for recording audio from the microphone.
 final class AudioRecorder: NSObject {
 
+    // MARK: - Internal properties
+
+    /// Whether this `AudioRecorder` is currently recording.
+    var isRecording: Bool {
+        return avAudioRecorder?.isRecording ?? false
+    }
+
     // MARK: - Private properties
 
     private var avAudioRecorder: AVAudioRecorder?
+    // TODO: Clean up.
     private let avAudioRecorderSettings = [
         AVSampleRateKey: NSNumber(value: Float(44100.0)),
         AVFormatIDKey: NSNumber(value: Int32(kAudioFormatMPEG4AAC)),
@@ -22,13 +30,6 @@ final class AudioRecorder: NSObject {
         AVEncoderAudioQualityKey: NSNumber(value: Int32(AVAudioQuality.medium.rawValue))]
 
     private let saveDirectory: URL
-
-    // MARK: - Public properties
-
-    /// Whether this `AudioRecorder` is currently recording.
-    var isRecording: Bool {
-        return avAudioRecorder?.isRecording ?? false
-    }
 
     // MARK: - Initialization
 
@@ -90,7 +91,7 @@ private extension AudioRecorder {
 
             return newAVAudioRecorder
         } catch {
-            assertionFailure("Failed to create a new `AVAudioRecorder`: \(error)")
+            assertionFailure("Failed to create a new `AVAudioRecorder`: \(error.localizedDescription)")
             return AVAudioRecorder()
         }
     }
@@ -106,6 +107,6 @@ extension AudioRecorder: AVAudioRecorderDelegate {
 
     func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
         guard let error = error else { return }
-        Logger.log(.error, "Encode error did occur: \(error)")
+        Logger.log(.error, "Encode error did occur: \(error.localizedDescription)")
     }
 }

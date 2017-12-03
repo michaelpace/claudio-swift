@@ -12,17 +12,17 @@ import AVFoundation
 /// A class which can play audio.
 final class AudioPlayer: NSObject {
 
-    // MARK: - Private properties
-
-    private var avAudioPlayer: AVAudioPlayer?
-    private let playbackDirectory: URL
-
-    // MARK: - Public properties
+    // MARK: - Internal properties
 
     /// Whether this `AudioPlayer` is currently playing any audio.
     var isPlaying: Bool {
         return avAudioPlayer?.isPlaying ?? false
     }
+
+    // MARK: - Private properties
+
+    private var avAudioPlayer: AVAudioPlayer?
+    private let playbackDirectory: URL
 
     // MARK: - Initialization
 
@@ -88,7 +88,7 @@ private extension AudioPlayer {
             newAVAudioPlayer.delegate = self
             return newAVAudioPlayer
         } catch {
-            assertionFailure("Error creating a new `AVAudioPlayer`: \(error)")
+            assertionFailure("Error creating a new `AVAudioPlayer`: \(error.localizedDescription)")
             return AVAudioPlayer()
         }
     }
@@ -105,7 +105,7 @@ extension AudioPlayer: AVAudioPlayerDelegate {
 
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         guard let error = error else { return }
-        Logger.log(.debug, "Decode error did occur: \(error)")
+        Logger.log(.debug, "Decode error did occur: \(error.localizedDescription)")
     }
     
 }
