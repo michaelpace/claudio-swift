@@ -12,6 +12,12 @@ import RealmSwift
 /// A data store for storing model objects.
 final class DataStore: DataStoring {
 
+    func create(_ model: Object) {
+        write {
+            realm.add(model)
+        }
+    }
+
     func write(_ block: () -> Void) {
         do {
             try realm.write(block)

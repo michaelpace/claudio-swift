@@ -12,6 +12,11 @@ import RealmSwift
 /// Describes a type which has methods to store, retrieve, and delete data models.
 protocol DataStoring {
 
+    /// Creates the specified model in the data store.
+    ///
+    /// - Parameter model: The model to create in the data store.
+    func create(_ model: Object)
+
     /// Updates the contents of the data store per the changes in `block`.
     ///
     /// - Parameter block: A block that will be executed to update the data store.

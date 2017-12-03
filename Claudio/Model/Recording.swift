@@ -15,16 +15,16 @@ final class Recording: Object {
     // MARK: - Properties
 
     /// The recording's primary key.
-    @objc dynamic var identifier = 0
+    @objc dynamic var identifier = ""
 
-    /// The URL to the recording's directory.
-    @objc dynamic var directory = ""
+    /// The URL to the recording's directory. Defaults to `URL.userDocumentsDirectory.absoluteString`.
+    @objc dynamic var directory = URL.userDocumentsDirectory.absoluteString
 
     /// The recording's path on disk.
     @objc dynamic var path = ""
 
     override static func primaryKey() -> String? {
-        return "identifier"
+        return Key.identifier.rawValue
     }
 
 }
@@ -41,6 +41,17 @@ extension Recording {
             Logger.log(.error, "Error creating a URL from directory: \(directory)")
             return URL(fileURLWithPath: "")
         }
+    }
+
+}
+
+// MARK: - Nested types
+
+extension Recording {
+
+    /// Encapsulates keys for `Recording` properties.
+    enum Key: String {
+        case identifier = "identifier"
     }
 
 }
