@@ -40,15 +40,16 @@ final class AudioRecorder: NSObject {
     }
 }
 
-// MARK: - Public API
+// MARK: - Internal API
 
 extension AudioRecorder {
 
-    /// TODO
+    /// Begins recording audio. Returns the path at which the audio will be saved.
     ///
-    /// - Returns: TODO
+    /// - Returns: The path at which the recorded audio will be saved.
+    /// - note: If the user has not granted microphone permissions yet, calling this method will result in a system permission prompt appearing.
     @discardableResult func record() -> String {
-        let path = "hi"
+        let path = String(describing: Date())
         let url = saveDirectory.appendingPathComponent(path)
         let newAVAudioRecorder = makeAVAudioRecorderWithURL(url)
         avAudioRecorder = newAVAudioRecorder
@@ -66,7 +67,7 @@ extension AudioRecorder {
         return path
     }
 
-    /// TODO
+    /// Stops any recording in progress.
     func stop() {
         Logger.log(.debug, "Stopping recording")
         avAudioRecorder?.stop()
@@ -85,9 +86,9 @@ private extension AudioRecorder {
             newAVAudioRecorder.delegate = self
 
             if newAVAudioRecorder.prepareToRecord() {
-                Logger.log(.debug, "successfully prepared to record")
+                Logger.log(.debug, "Successfully prepared to record")
             } else {
-                Logger.log(.debug, "failed to prepare to record")
+                Logger.log(.debug, "Failed to prepare to record")
             }
 
             return newAVAudioRecorder

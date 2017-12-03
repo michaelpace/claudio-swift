@@ -9,25 +9,28 @@
 import Foundation
 import AVFoundation
 
-/// TODO
+/// A class which can play audio.
 final class AudioPlayer: NSObject {
 
     // MARK: - Private properties
 
     private var avAudioPlayer: AVAudioPlayer?
-    private let saveDirectory: URL
+    private let playbackDirectory: URL
 
     // MARK: - Public properties
 
-    /// TODO
+    /// Whether this `AudioPlayer` is currently playing any audio.
     var isPlaying: Bool {
         return avAudioPlayer?.isPlaying ?? false
     }
 
     // MARK: - Initialization
 
-    init(saveDirectory: URL = .userDocumentsDirectory) {
-        self.saveDirectory = saveDirectory
+    /// Initializes a new `AudioPlayer`.
+    ///
+    /// - Parameter playbackDirectory: A URL pointing to the directory in which to locate files for playback. Defaults to `.userDocumentsDirectory`.
+    init(playbackDirectory: URL = .userDocumentsDirectory) {
+        self.playbackDirectory = playbackDirectory
     }
 }
 
@@ -35,13 +38,14 @@ final class AudioPlayer: NSObject {
 
 extension AudioPlayer {
 
-    /// TODO
+    /// Plays the audio at the given path.
     ///
-    /// - Parameter path: TODO
+    /// - Parameter path: The path for which to play audio.
     func play(_ path: String) {
-        let url = saveDirectory.appendingPathComponent(path)
+        let url = playbackDirectory.appendingPathComponent(path)
         Logger.log(.debug, "Playing url \(url)")
-        
+
+        // TODO: Figure out how to represent & persist playback source.
         AudioSession.shared.mode = .earpiecePlayback
         AudioSession.shared.setSessionActive(true)
 
@@ -52,13 +56,18 @@ extension AudioPlayer {
         avAudioPlayer?.play()
     }
 
-    /// TODO
-    func pause() {
-        Logger.log(.debug, "Pausing playback")
-        avAudioPlayer?.pause()
+    /// Pauses the currently playing audio. Call `play(_:)` again to resume playback.
+    func togglePauseState() {
+        if isPlaying {
+            Logger.log(.debug, "Pausing playback")
+            avAudioPlayer?.pause()
+        } else {
+            Logger.log(.debug, "Resuming playback")
+            avAudioPlayer?.play()
+        }
     }
 
-    /// TODO
+    /// Stops playback.
     func stop() {
         Logger.log(.debug, "Stopping playback")
 
