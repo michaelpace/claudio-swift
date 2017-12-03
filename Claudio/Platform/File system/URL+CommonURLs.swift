@@ -17,7 +17,8 @@ extension URL {
 
         guard let url = possibleURLs.first else {
             Logger.log(.error, "Error creating URL to documents directory.")
-            fatalError()
+            assertionFailure()
+            return URL(fileURLWithPath: "")
         }
 
         return url

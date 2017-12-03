@@ -63,7 +63,8 @@ extension AudioRecorder {
         
         guard newAVAudioRecorder.record() else {
             Logger.log(.error, "Failed to record")
-            fatalError()
+            assertionFailure()
+            return ""
         }
 
         Logger.log(.debug, "Recording to url: \(url)")
