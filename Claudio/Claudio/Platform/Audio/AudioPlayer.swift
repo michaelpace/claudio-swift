@@ -23,14 +23,17 @@ final class AudioPlayer: NSObject {
 
     private var avAudioPlayer: AVAudioPlayer?
     private let playbackDirectory: URL
+    private let audioSession: AudioSession
 
     // MARK: - Initialization
 
     /// Initializes a new `AudioPlayer`.
     ///
     /// - Parameter playbackDirectory: A URL pointing to the directory in which to locate files for playback. Defaults to `.userDocumentsDirectory`.
-    init(playbackDirectory: URL = .userDocumentsDirectory) {
+    /// - Parameter audioSession: The audio session to use for playback. Defaults to `.shared`.
+    init(playbackDirectory: URL = .userDocumentsDirectory, audioSession: AudioSession = .shared) {
         self.playbackDirectory = playbackDirectory
+        self.audioSession = audioSession
     }
 }
 
@@ -46,8 +49,8 @@ extension AudioPlayer {
         Logger.log(.debug, "Playing url \(url)")
 
         // TODO: Figure out how to represent & persist playback source.
-        AudioSession.shared.mode = .earpiecePlayback
-        AudioSession.shared.setSessionActive(true)
+        audioSession.mode = .earpiecePlayback
+        audioSession.setSessionActive(true)
 
         if avAudioPlayer?.url != url {
             avAudioPlayer = makeAVAudioPlayerWithURL(url)
@@ -72,7 +75,7 @@ extension AudioPlayer {
         Logger.log(.debug, "Stopping playback")
 
         avAudioPlayer?.stop()
-        AudioSession.shared.setSessionActive(false)
+        audioSession.setSessionActive(false)
         avAudioPlayer?.currentTime = 0
     }
 

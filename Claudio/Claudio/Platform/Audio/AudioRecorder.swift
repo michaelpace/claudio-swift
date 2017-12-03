@@ -30,11 +30,18 @@ final class AudioRecorder: NSObject {
         AVEncoderAudioQualityKey: NSNumber(value: Int32(AVAudioQuality.medium.rawValue))]
 
     private let saveDirectory: URL
+    private let audioSession: AudioSession
 
     // MARK: - Initialization
 
-    init(saveDirectory: URL = .userDocumentsDirectory) {
+    /// Initializes a new `AudioRecorder`.
+    ///
+    /// - Parameters:
+    ///   - saveDirectory: The directory to which to save recordings. Defaults to `.userDocumentsDirectory`.
+    ///   - audioSession: The audio session to use for recording. Defaults to `.shared`.
+    init(saveDirectory: URL = .userDocumentsDirectory, audioSession: AudioSession = .shared) {
         self.saveDirectory = saveDirectory
+        self.audioSession = audioSession
     }
 }
 
@@ -52,8 +59,8 @@ extension AudioRecorder {
         let newAVAudioRecorder = makeAVAudioRecorderWithURL(url)
         avAudioRecorder = newAVAudioRecorder
 
-        AudioSession.shared.mode = .recording
-        AudioSession.shared.setSessionActive(true)
+        audioSession.mode = .recording
+        audioSession.setSessionActive(true)
         
         guard newAVAudioRecorder.record() else {
             Logger.log(.error, "Failed to record")
@@ -69,7 +76,7 @@ extension AudioRecorder {
     func stop() {
         Logger.log(.debug, "Stopping recording")
         avAudioRecorder?.stop()
-        AudioSession.shared.setSessionActive(false)
+        audioSession.setSessionActive(false)
     }
 
 }
