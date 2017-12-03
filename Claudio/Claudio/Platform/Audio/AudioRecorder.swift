@@ -22,8 +22,7 @@ final class AudioRecorder: NSObject {
     // MARK: - Private properties
 
     private var avAudioRecorder: AVAudioRecorder?
-    // TODO: Clean up.
-    private let avAudioRecorderSettings = [
+    private static let avAudioRecorderSettings = [
         AVSampleRateKey: NSNumber(value: Float(44100.0)),
         AVFormatIDKey: NSNumber(value: Int32(kAudioFormatMPEG4AAC)),
         AVNumberOfChannelsKey: NSNumber(value: 1),
@@ -87,7 +86,7 @@ private extension AudioRecorder {
 
     func makeAVAudioRecorderWithURL(_ url: URL) -> AVAudioRecorder {
         do {
-            let newAVAudioRecorder = try AVAudioRecorder(url: url, settings: avAudioRecorderSettings)
+            let newAVAudioRecorder = try AVAudioRecorder(url: url, settings: type(of: self).avAudioRecorderSettings)
             newAVAudioRecorder.delegate = self
 
             if newAVAudioRecorder.prepareToRecord() {

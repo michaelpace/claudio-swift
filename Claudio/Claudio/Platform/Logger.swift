@@ -26,7 +26,7 @@ struct Logger {
     static func log(_ logLevel: LogLevel, _ message: @autoclosure () -> String, file: StaticString = #file, line: Int = #line, function: StaticString = #function) {
         guard logLevel.rawValue >= minimumLogLevel.rawValue else { return }
 
-        print("\(logLevel) – \(file):\(line) – \(function) 💬 \(message())")
+        print("\(logLevel) – \(file):\(line) – \(function) ➡️ \(message())")
     }
 }
 
